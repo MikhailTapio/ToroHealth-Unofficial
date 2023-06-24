@@ -31,9 +31,9 @@ public class ParticleRenderer {
         Minecraft client = Minecraft.getInstance();
         float tickDelta = client.getDeltaFrameTime();
 
-        double x = Mth.lerp((double) tickDelta, particle.xPrev, particle.x);
-        double y = Mth.lerp((double) tickDelta, particle.yPrev, particle.y);
-        double z = Mth.lerp((double) tickDelta, particle.zPrev, particle.z);
+        double x = Mth.lerp(tickDelta, particle.xPrev, particle.x);
+        double y = Mth.lerp(tickDelta, particle.yPrev, particle.y);
+        double z = Mth.lerp(tickDelta, particle.zPrev, particle.z);
 
         Vec3 camPos = camera.getPosition();
         double camX = camPos.x;

@@ -14,7 +14,7 @@ public class FileWatcher implements Runnable {
     private final Listener listener;
 
     @FunctionalInterface
-    public static interface Listener {
+    public interface Listener {
         void onUpdate();
     }
 

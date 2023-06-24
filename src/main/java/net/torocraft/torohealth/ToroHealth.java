@@ -17,10 +17,10 @@ public class ToroHealth {
     public static final String MODID = "torohealth";
 
     public static Config CONFIG = new Config();
-    public static Hud HUD = new Hud();
+    public static final Hud HUD = new Hud();
     public static RayTrace RAYTRACE = new RayTrace();
     public static boolean IS_HOLDING_WEAPON = false;
-    public static Random RAND = new Random();
+    public static final Random RAND = new Random();
 
     private static final ConfigLoader<Config> CONFIG_LOADER = new ConfigLoader<>(new Config(), ToroHealth.MODID + ".json", config -> ToroHealth.CONFIG = config);
 

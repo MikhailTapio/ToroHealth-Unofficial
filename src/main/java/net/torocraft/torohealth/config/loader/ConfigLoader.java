@@ -64,7 +64,7 @@ public class ConfigLoader<T extends IConfig> {
         if (watcher != null) {
             return;
         }
-        watcher = FileWatcher.watch(file, () -> load());
+        watcher = FileWatcher.watch(file, this::load);
     }
 
 }

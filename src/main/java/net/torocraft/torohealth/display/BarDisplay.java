@@ -4,7 +4,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
@@ -16,11 +15,9 @@ public class BarDisplay {
     private static final ResourceLocation ICON_TEXTURES =
             new ResourceLocation("textures/gui/icons.png");
     private final Minecraft mc;
-    private final Screen gui;
 
-    public BarDisplay(Minecraft mc, Screen gui) {
+    public BarDisplay(Minecraft mc) {
         this.mc = mc;
-        this.gui = gui;
     }
 
     private String getEntityName(LivingEntity entity) {
@@ -47,7 +44,7 @@ public class BarDisplay {
         graphics.drawString(mc.font, name, xOffset, 2, 16777215);
         xOffset += mc.font.width(name) + 5;
 
-        renderHeartIcon(graphics, xOffset, (int) 1);
+        renderHeartIcon(graphics, xOffset, 1);
         xOffset += 10;
 
         graphics.drawString(mc.font, healthText, xOffset, 2, 0xe0e0e0);
@@ -56,7 +53,7 @@ public class BarDisplay {
         int armor = entity.getArmorValue();// getArmor();
 
         if (armor > 0) {
-            renderArmorIcon(graphics, xOffset, (int) 1);
+            renderArmorIcon(graphics, xOffset, 1);
             xOffset += 10;
             graphics.drawString(mc.font, entity.getArmorValue() + "", xOffset, 2, 0xe0e0e0);
         }

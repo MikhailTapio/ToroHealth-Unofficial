@@ -7,8 +7,7 @@ import com.google.gson.stream.JsonWriter;
 import java.awt.*;
 import java.io.IOException;
 
-public class ColorJsonAdpater extends TypeAdapter<Integer> {
-
+public class ColorJsonAdapter extends TypeAdapter<Integer> {
     @Override
     public void write(JsonWriter out, Integer value) throws IOException {
         String hex = Integer.toHexString(value & 0xffffff);

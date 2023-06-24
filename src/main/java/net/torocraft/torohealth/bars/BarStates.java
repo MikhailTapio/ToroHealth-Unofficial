@@ -12,7 +12,7 @@ import java.util.Map;
 public class BarStates {
 
     private static final Map<Integer, BarState> STATES = new HashMap<>();
-    public static List<BarParticle> PARTICLES = new ArrayList<>();
+    public static final List<BarParticle> PARTICLES = new ArrayList<>();
     private static int tickCount = 0;
 
     public static BarState getState(LivingEntity entity) {
@@ -34,7 +34,7 @@ public class BarStates {
             cleanCache();
         }
 
-        PARTICLES.forEach(p -> p.tick());
+        PARTICLES.forEach(BarParticle::tick);
         PARTICLES.removeIf(p -> p.age > 50);
 
         tickCount++;

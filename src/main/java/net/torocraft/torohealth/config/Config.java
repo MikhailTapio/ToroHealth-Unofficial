@@ -1,7 +1,7 @@
 package net.torocraft.torohealth.config;
 
 import com.google.gson.annotations.JsonAdapter;
-import net.torocraft.torohealth.config.loader.ColorJsonAdpater;
+import net.torocraft.torohealth.config.loader.ColorJsonAdapter;
 import net.torocraft.torohealth.config.loader.IConfig;
 
 public class Config implements IConfig {
@@ -17,52 +17,52 @@ public class Config implements IConfig {
         TOP_LEFT, TOP_CENTER, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT
     }
 
-    public boolean watchForChanges = true;
-    public Hud hud = new Hud();
-    public Bar bar = new Bar();
-    public InWorld inWorld = new InWorld();
-    public Particle particle = new Particle();
+    public final boolean watchForChanges = true;
+    public final Hud hud = new Hud();
+    public final Bar bar = new Bar();
+    public final InWorld inWorld = new InWorld();
+    public final Particle particle = new Particle();
 
     public static class Hud {
-        public int distance = 60;
-        public float x = 4f;
-        public float y = 4f;
-        public float scale = 1f;
-        public int hideDelay = 20;
-        public AnchorPoint anchorPoint = AnchorPoint.TOP_LEFT;
-        public boolean showEntity = true;
-        public boolean showBar = true;
-        public boolean showSkin = true;
-        public boolean onlyWhenHurt = false;
+        public final int distance = 60;
+        public final float x = 4f;
+        public final float y = 4f;
+        public final float scale = 1f;
+        public final int hideDelay = 20;
+        public final AnchorPoint anchorPoint = AnchorPoint.TOP_LEFT;
+        public final boolean showEntity = true;
+        public final boolean showBar = true;
+        public final boolean showSkin = true;
+        public final boolean onlyWhenHurt = false;
     }
 
     public static class Particle {
-        public boolean show = true;
-        @JsonAdapter(ColorJsonAdpater.class)
-        public int damageColor = 0xff0000;
-        @JsonAdapter(ColorJsonAdpater.class)
-        public int healColor = 0x00ff00;
-        public int distance = 60;
+        public final boolean show = true;
+        @JsonAdapter(ColorJsonAdapter.class)
+        public final int damageColor = 0xff0000;
+        @JsonAdapter(ColorJsonAdapter.class)
+        public final int healColor = 0x00ff00;
+        public final int distance = 60;
         public transient int distanceSquared = 0;
     }
 
     public static class Bar {
-        public NumberType damageNumberType = NumberType.LAST;
-        @JsonAdapter(ColorJsonAdpater.class)
-        public int friendColor = 0x00ff00;
-        @JsonAdapter(ColorJsonAdpater.class)
-        public int friendColorSecondary = 0x008000;
-        @JsonAdapter(ColorJsonAdpater.class)
-        public int foeColor = 0xff0000;
-        @JsonAdapter(ColorJsonAdpater.class)
-        public int foeColorSecondary = 0x800000;
+        public final NumberType damageNumberType = NumberType.LAST;
+        @JsonAdapter(ColorJsonAdapter.class)
+        public final int friendColor = 0x00ff00;
+        @JsonAdapter(ColorJsonAdapter.class)
+        public final int friendColorSecondary = 0x008000;
+        @JsonAdapter(ColorJsonAdapter.class)
+        public final int foeColor = 0xff0000;
+        @JsonAdapter(ColorJsonAdapter.class)
+        public final int foeColorSecondary = 0x800000;
     }
 
     public static class InWorld {
-        public Mode mode = Mode.NONE;
-        public float distance = 60f;
-        public boolean onlyWhenLookingAt = false;
-        public boolean onlyWhenHurt = false;
+        public final Mode mode = Mode.NONE;
+        public final float distance = 60f;
+        public final boolean onlyWhenLookingAt = false;
+        public final boolean onlyWhenHurt = false;
     }
 
     @Override

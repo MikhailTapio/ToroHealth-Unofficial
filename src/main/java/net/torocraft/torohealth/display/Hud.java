@@ -15,16 +15,16 @@ import net.torocraft.torohealth.config.Config.AnchorPoint;
 public class Hud extends Screen {
     private static final ResourceLocation BACKGROUND_TEXTURE =
             new ResourceLocation(ToroHealth.MODID + ":textures/gui/default_skin_basic.png");
-    private EntityDisplay entityDisplay = new EntityDisplay();
+    private final EntityDisplay entityDisplay = new EntityDisplay();
     private LivingEntity entity;
-    private BarDisplay barDisplay;
+    private final BarDisplay barDisplay;
     private Config config = new Config();
     private int age;
 
     public Hud() {
         super(Component.literal("ToroHealth HUD"));
         this.minecraft = Minecraft.getInstance();
-        barDisplay = new BarDisplay(Minecraft.getInstance(), this);
+        barDisplay = new BarDisplay(Minecraft.getInstance());
     }
 
     public void draw(ForgeGui gui, GuiGraphics poseStack, float partialTick, int width, int height) {

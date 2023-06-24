@@ -6,24 +6,24 @@ import net.minecraft.world.phys.Vec3;
 import net.torocraft.torohealth.ToroHealth;
 
 public class BarParticle {
-    public int damage;
+    public final int damage;
 
-    public double x = 0;
-    public double y = 0;
-    public double z = 0;
-    public double xPrev = 0;
-    public double yPrev = 0;
-    public double zPrev = 0;
+    public double x;
+    public double y;
+    public double z;
+    public double xPrev;
+    public double yPrev;
+    public double zPrev;
 
-    public int age = 0;
+    public int age;
 
-    public double ax = 0.00;
-    public double ay = -0.01;
-    public double az = 0.00;
+    public final double ax = 0.00;
+    public final double ay = -0.01;
+    public final double az = 0.00;
 
-    public double vx = 0;
-    public double vy = 0;
-    public double vz = 0;
+    public double vx;
+    public double vy;
+    public double vz;
 
     public BarParticle(Entity entity, int damage) {
         Minecraft client = Minecraft.getInstance();

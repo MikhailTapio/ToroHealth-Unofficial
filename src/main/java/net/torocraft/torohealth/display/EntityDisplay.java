@@ -72,8 +72,8 @@ public class EntityDisplay {
      */
     public static void drawEntity(PoseStack matrixStack2, int x, int y, int size, float mouseX,
                                   float mouseY, LivingEntity entity, float scale) {
-        float f = (float) Math.atan((double) (mouseX / 40.0F));
-        float g = (float) Math.atan((double) (mouseY / 40.0F));
+        float f = (float) Math.atan(mouseX / 40.0F);
+        float g = (float) Math.atan(mouseY / 40.0F);
         PoseStack matrixStack = RenderSystem.getModelViewStack();
         matrixStack.pushPose();
         matrixStack.translate((double) x * scale, (double) y * scale, 1050.0D * scale);
@@ -105,10 +105,8 @@ public class EntityDisplay {
         MultiBufferSource.BufferSource immediate =
                 Minecraft.getInstance().renderBuffers().bufferSource();
 
-        RenderSystem.runAsFancy(() -> {
-            entityrenderdispatcher.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, matrixStack2, immediate,
-                    15728880);
-        });
+        RenderSystem.runAsFancy(() -> entityrenderdispatcher.render(entity, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, matrixStack2, immediate,
+                15728880));
 
         immediate.endBatch();
         entityrenderdispatcher.setRenderShadow(true);

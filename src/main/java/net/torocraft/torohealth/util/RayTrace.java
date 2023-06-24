@@ -1,5 +1,6 @@
 package net.torocraft.torohealth.util;
 
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,12 +17,15 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.function.Predicate;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class RayTrace implements BlockGetter {
-    private static Predicate<Entity> isVisible =
+    private static final Predicate<Entity> isVisible =
             entity -> !entity.isSpectator() && entity.isPickable();
-    private static Minecraft minecraft = Minecraft.getInstance();
+    private static final Minecraft minecraft = Minecraft.getInstance();
 
     @Override
     public BlockEntity getBlockEntity(BlockPos pos) {
@@ -59,8 +63,7 @@ public class RayTrace implements BlockGetter {
             return null;
         }
 
-        if (result.getEntity() instanceof LivingEntity) {
-            LivingEntity target = (LivingEntity) result.getEntity();
+        if (result.getEntity() instanceof LivingEntity target) {
 
             HitResult blockHit =
                     clip(setupRayTraceContext(client.player, reachDistance, ClipContext.Fluid.NONE));
@@ -78,8 +81,7 @@ public class RayTrace implements BlockGetter {
         return null;
     }
 
-    private ClipContext setupRayTraceContext(Player player, double distance,
-                                             ClipContext.Fluid fluidHandling) {
+    private ClipContext setupRayTraceContext(Player player, double distance, ClipContext.Fluid fluidHandling) {
         float pitch = player.getXRot();
         float yaw = player.getYRot();
         Vec3 fromPos = player.getEyePosition(1.0F);
