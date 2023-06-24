@@ -17,6 +17,7 @@ import net.torocraft.torohealth.bars.BarStates;
 import net.torocraft.torohealth.bars.HealthBarRenderer;
 import net.torocraft.torohealth.bars.ParticleRenderer;
 import net.torocraft.torohealth.util.HoldingWeaponUpdater;
+import net.torocraft.torohealth.util.RayTrace;
 
 public class ClientEventHandler {
 
@@ -48,7 +49,7 @@ public class ClientEventHandler {
 
     private static void playerTick(PlayerTickEvent event) {
         if (!event.player.level().isClientSide) return;
-        ToroHealthClient.HUD.setEntity(ToroHealthClient.RAYTRACE.getEntityInCrosshair(0, ToroHealth.CONFIG.hud.distance));
+        ToroHealthClient.HUD.setEntity(RayTrace.getEntityInCrosshair(0, ToroHealth.CONFIG.hud.distance));
         BarStates.tick();
         HoldingWeaponUpdater.update();
         ToroHealthClient.HUD.tick();
