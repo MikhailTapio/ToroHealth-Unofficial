@@ -1,6 +1,5 @@
 package net.torocraft.torohealth;
 
-import committee.nova.guigraphicsgetter.GuiGraphicsGetter;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -13,6 +12,7 @@ import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.torocraft.torohealth.api.IGuiGraphicsGetter;
 import net.torocraft.torohealth.bars.BarStates;
 import net.torocraft.torohealth.bars.HealthBarRenderer;
 import net.torocraft.torohealth.bars.ParticleRenderer;
@@ -40,7 +40,7 @@ public class ClientEventHandler {
     private static void renderParticles(RenderLevelStageEvent event) {
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
             Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
-            final GuiGraphics graphics = GuiGraphicsGetter.getGuiGraphicsWithPose(Minecraft.getInstance(), event.getPoseStack());
+            final GuiGraphics graphics = ((IGuiGraphicsGetter) Minecraft.getInstance()).getGuiGraphics(event.getPoseStack());
             ParticleRenderer.renderParticles(graphics, camera);
             HealthBarRenderer.renderInWorld(event.getPartialTick(), graphics, camera);
             graphics.flush();
