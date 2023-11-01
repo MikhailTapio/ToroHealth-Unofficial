@@ -10,7 +10,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 version = '1.0.0'
-group = 'net.torocraft'
+group = 'net.torocraft.torohealth.forge'
 archivesBaseName = "ToroHealth-Unofficial-Forge-${project.minecraft_version}"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -93,4 +93,25 @@ jar.finalizedBy('reobfJar')
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = "torohealth-unofficial-${project.minecraft_version}"
+            from components.java
+        }
+    }
+
+    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+    repositories {
+        maven {
+            name = "release"
+            url = 'https://maven.nova-committee.cn/releases'
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
 }
