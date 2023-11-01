@@ -28,7 +28,7 @@ public class Hud extends Screen {
     }
 
     public void draw(ForgeGui gui, GuiGraphics poseStack, float partialTick, int width, int height) {
-        if (minecraft == null || minecraft.options.renderDebug) return;
+        if (minecraft == null || minecraft.getDebugOverlay().showDebugScreen()) return;
         this.config = ToroHealth.CONFIG;
         if (this.config == null) this.config = new Config();
         float x = determineX();
