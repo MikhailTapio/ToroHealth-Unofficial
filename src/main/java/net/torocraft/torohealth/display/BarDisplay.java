@@ -14,6 +14,10 @@ public class BarDisplay {
 
     private static final ResourceLocation ICON_TEXTURES =
             new ResourceLocation("textures/gui/icons.png");
+
+    private static final ResourceLocation ARMOR = new ResourceLocation("hud/armor_full");
+    private static final ResourceLocation HEART = new ResourceLocation("hud/heart/full");
+
     private final Minecraft mc;
 
     public BarDisplay(Minecraft mc) {
@@ -60,10 +64,10 @@ public class BarDisplay {
     }
 
     private void renderArmorIcon(GuiGraphics graphics, int x, int y) {
-        graphics.blit(ICON_TEXTURES, x, y, 34, 9, 9, 9);
+        graphics.blitSprite(ARMOR, x, y, 9, 9);
     }
 
     private void renderHeartIcon(GuiGraphics graphics, int x, int y) {
-        graphics.blit(ICON_TEXTURES, x, y, 16 + 36, 0, 9, 9);
+        graphics.blitSprite(HEART, x, y, 9, 9);
     }
 }
