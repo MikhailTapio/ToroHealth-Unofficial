@@ -38,10 +38,11 @@ public class HealthBarRenderer {
 
     public static void prepareRenderInWorld(LivingEntity entity) {
         Minecraft client = Minecraft.getInstance();
-
         if (!EntityUtil.showHealthBar(entity, client)) {
             return;
         }
+
+        if (client.getCameraEntity() == null) return;
 
         if (entity.distanceTo(client.getCameraEntity()) > ToroHealth.CONFIG.inWorld.distance) {
             return;
@@ -153,7 +154,7 @@ public class HealthBarRenderer {
     }
 
     public static void drawDamageNumber(GuiGraphics graphics, int dmg, double x, double y, float width) {
-        int i = Math.abs(Math.round(dmg));
+        int i = Math.abs(dmg);
         if (i == 0) {
             return;
         }

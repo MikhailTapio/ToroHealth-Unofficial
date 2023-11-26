@@ -50,6 +50,7 @@ public class BarStates {
         }
 
         Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.level == null) return true;
         Entity entity = minecraft.level.getEntity(entry.getKey());
 
         if (!(entity instanceof LivingEntity)) {

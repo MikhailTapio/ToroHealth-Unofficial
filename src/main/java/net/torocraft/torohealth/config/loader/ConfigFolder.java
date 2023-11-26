@@ -1,6 +1,6 @@
 package net.torocraft.torohealth.config.loader;
 
-import net.minecraftforge.fml.loading.FMLPaths;
+import net.neoforged.fml.loading.FMLPaths;
 
 import java.io.File;
 
