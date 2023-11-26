@@ -4,7 +4,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.common.NeoForge;
 import net.torocraft.torohealth.config.Config;
 import net.torocraft.torohealth.config.loader.ConfigLoader;
 
@@ -23,7 +22,6 @@ public class ToroHealth {
     public ToroHealth() {
         if (!FMLEnvironment.dist.isClient()) return;
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        NeoForge.EVENT_BUS.register(this);
         ToroHealthClient.init();
     }
 
