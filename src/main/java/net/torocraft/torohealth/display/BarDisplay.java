@@ -1,7 +1,6 @@
 package net.torocraft.torohealth.display;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
@@ -14,6 +13,8 @@ public class BarDisplay {
 
     private static final ResourceLocation ICON_TEXTURES =
             new ResourceLocation("textures/gui/icons.png");
+    private static final ResourceLocation ARMOR = new ResourceLocation("hud/armor_full");
+    private static final ResourceLocation HEART = new ResourceLocation("hud/heart/full");
     private final Minecraft mc;
 
     public BarDisplay(Minecraft mc) {
@@ -27,12 +28,10 @@ public class BarDisplay {
     public void draw(GuiGraphics graphics, LivingEntity entity) {
         int xOffset = 0;
 
-        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+        graphics.setColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, ICON_TEXTURES);
         RenderSystem.enableBlend();
 
-        final PoseStack matrix = graphics.pose();
         HealthBarRenderer.render(graphics, entity, 63, 14, 130, false);
         String name = getEntityName(entity);
         int healthMax = Mth.ceil(entity.getMaxHealth());
@@ -60,10 +59,10 @@ public class BarDisplay {
     }
 
     private void renderArmorIcon(GuiGraphics graphics, int x, int y) {
-        graphics.blit(ICON_TEXTURES, x, y, 34, 9, 9, 9);
+        graphics.blitSprite(ARMOR, x, y, 9, 9);
     }
 
     private void renderHeartIcon(GuiGraphics graphics, int x, int y) {
-        graphics.blit(ICON_TEXTURES, x, y, 16 + 36, 0, 9, 9);
+        graphics.blitSprite(HEART, x, y, 9, 9);
     }
 }
