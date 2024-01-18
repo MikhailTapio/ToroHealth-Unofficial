@@ -4,8 +4,9 @@ import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.model.EntityModel;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.RegisterGuiOverlaysEvent;
 import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
 import net.neoforged.neoforge.client.event.RenderLivingEvent;
@@ -21,15 +22,15 @@ import net.torocraft.torohealth.util.RayTrace;
 
 public class ClientEventHandler {
 
-    public static void init() {
+    public static void init(IEventBus bus) {
         NeoForge.EVENT_BUS.addListener(ClientEventHandler::playerTick);
         NeoForge.EVENT_BUS.addListener(ClientEventHandler::entityRender);
         NeoForge.EVENT_BUS.addListener(ClientEventHandler::renderParticles);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientEventHandler::registerOverlays);
+        bus.addListener(ClientEventHandler::registerOverlays);
     }
 
     private static void registerOverlays(final RegisterGuiOverlaysEvent event) {
-        event.registerAbove(VanillaGuiOverlay.POTION_ICONS.id(), "torohealth_hud", ToroHealthClient.HUD::draw);
+        event.registerAbove(VanillaGuiOverlay.POTION_ICONS.id(), new ResourceLocation(ToroHealth.MODID, "torohealth_hud"), ToroHealthClient.HUD::draw);
     }
 
     private static void entityRender(

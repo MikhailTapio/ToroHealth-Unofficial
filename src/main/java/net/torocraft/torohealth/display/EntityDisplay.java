@@ -70,8 +70,10 @@ public class EntityDisplay {
     /**
      * copied from InventoryScreen.drawEntity() to expose the matrixStack
      */
-    public static void drawEntity(PoseStack matrixStack2, int x, int y, int size, float mouseX,
-                                  float mouseY, LivingEntity entity, float scale) {
+    public static void drawEntity(
+            PoseStack matrixStack2, int x, int y, int size, float mouseX,
+            float mouseY, LivingEntity entity, float scale
+    ) {
         float f = (float) Math.atan(mouseX / 40.0F);
         float g = (float) Math.atan(mouseY / 40.0F);
         PoseStack matrixStack = RenderSystem.getModelViewStack();
