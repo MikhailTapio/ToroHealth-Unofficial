@@ -40,7 +40,7 @@ public class ClientEventHandler {
     private static void renderParticles(RenderLevelStageEvent event) {
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
             Camera camera = Minecraft.getInstance().gameRenderer.getMainCamera();
-            final GuiGraphics graphics = ((IGuiGraphicsGetter) Minecraft.getInstance()).getGuiGraphics(event.getPoseStack());
+            final GuiGraphics graphics = ((IGuiGraphicsGetter) Minecraft.getInstance()).toroHealth$getGuiGraphics(event.getPoseStack());
             ParticleRenderer.renderParticles(graphics, camera);
             HealthBarRenderer.renderInWorld(event.getPartialTick(), graphics, camera);
             graphics.flush();

@@ -9,6 +9,7 @@ import net.torocraft.torohealth.api.IGuiGraphicsGetter;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 
 @Mixin(Minecraft.class)
 public abstract class MixinMinecraft implements IGuiGraphicsGetter {
@@ -18,14 +19,15 @@ public abstract class MixinMinecraft implements IGuiGraphicsGetter {
     @Final
     private RenderBuffers renderBuffers;
 
-    private GuiGraphics getGuiGraphicsRaw() {
+    @Unique
+    private GuiGraphics toroHealth$getGuiGraphicsRaw() {
         return new GuiGraphics((Minecraft) (Object) this, renderBuffers.bufferSource());
     }
 
     @Override
-    public GuiGraphics getGuiGraphics(PoseStack pose) {
-        final GuiGraphics graphics = getGuiGraphicsRaw();
-        ((IGuiGraphics) graphics).setPose(pose);
+    public GuiGraphics toroHealth$getGuiGraphics(PoseStack pose) {
+        final GuiGraphics graphics = toroHealth$getGuiGraphicsRaw();
+        ((IGuiGraphics) graphics).toroHealth$setPose(pose);
         return graphics;
     }
 }

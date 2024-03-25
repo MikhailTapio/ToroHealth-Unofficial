@@ -16,7 +16,7 @@ public abstract class MixinGuiGraphics implements IGuiGraphics {
     private PoseStack pose;
 
     @Override
-    public void setPose(PoseStack pose) {
+    public void toroHealth$setPose(PoseStack pose) {
         this.pose = pose;
     }
 }
